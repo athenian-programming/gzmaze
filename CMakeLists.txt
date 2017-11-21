@@ -32,6 +32,3 @@ target_link_libraries(regenerate_widget
 find_package(gazebo REQUIRED)
 include_directories(${GAZEBO_INCLUDE_DIRS})
 link_directories(${GAZEBO_LIBRARY_DIRS})
-
-add_library(MousePlugin SHARED mouse_plugin/MousePlugin.cc)
-target_link_libraries(MousePlugin	 ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
