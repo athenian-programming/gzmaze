@@ -73,10 +73,20 @@ void MazePlugin::InsertWallsFromFile(sdf::ElementPtr base_link)
           //add a wall on the west
           InsertWall(base_link, i,j,Direction::W);
         }
+        // New
+        if (line.at(charPos) == '_'){
+          //add a wall on the south
+          InsertWall(base_link, i,j,Direction::S);
+        }
         charPos++;
         if (line.at(charPos) == '_'){
           //add a wall on the south
           InsertWall(base_link, i,j,Direction::S);
+        }
+        // New
+        if (line.at(charPos) == '|'){
+          //add a wall on the west
+          InsertWall(base_link, i,j,Direction::W);
         }
         charPos++;
       }
@@ -84,8 +94,8 @@ void MazePlugin::InsertWallsFromFile(sdf::ElementPtr base_link)
 
     //add east and north walls
     for (int i=0;i<MAZE_SIZE;i++){
-      //InsertWall(base_link, i, MAZE_SIZE - 1, Direction::E);
-      //InsertWall(base_link, 0, i, Direction::N);
+      InsertWall(base_link, i, MAZE_SIZE - 1, Direction::E);
+      InsertWall(base_link, 0, i, Direction::N);
     }
   }
   else {
