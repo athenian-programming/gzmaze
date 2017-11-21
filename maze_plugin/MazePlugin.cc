@@ -96,12 +96,12 @@ void MazePlugin::InsertWallsFromFile(sdf::ElementPtr base_link)
 void MazePlugin::InsertWall(sdf::ElementPtr link, int row, int col, Direction dir)
 {
   //ignore requests to insert center wall
-  //if ((row == MAZE_SIZE/2 && col == MAZE_SIZE/2 && (dir == Direction::N || dir == Direction::W))
-  //    || (row == MAZE_SIZE/2 && col == MAZE_SIZE/2 - 1 && (dir == Direction::N || dir == Direction::E))
-  //    || (row == MAZE_SIZE/2 - 1 && col == MAZE_SIZE/2 && (dir == Direction::S || dir == Direction::W))
-  //    || (row == MAZE_SIZE/2 - 1 && col == MAZE_SIZE/2 - 1 && (dir == Direction::S || dir == Direction::E))) {
-  //  return;
-  //}
+  if ((row == MAZE_SIZE/2 && col == MAZE_SIZE/2 && (dir == Direction::N || dir == Direction::W))
+      || (row == MAZE_SIZE/2 && col == MAZE_SIZE/2 - 1 && (dir == Direction::N || dir == Direction::E))
+      || (row == MAZE_SIZE/2 - 1 && col == MAZE_SIZE/2 && (dir == Direction::S || dir == Direction::W))
+      || (row == MAZE_SIZE/2 - 1 && col == MAZE_SIZE/2 - 1 && (dir == Direction::S || dir == Direction::E))) {
+    return;
+  }
 
   std::list<sdf::ElementPtr> walls_visuals = CreateWallVisual(row,col,dir);
   sdf::ElementPtr walls_collision = CreateWallCollision(row,col,dir);
@@ -125,8 +125,7 @@ std::list<sdf::ElementPtr> MazePlugin::CreateWallVisual(int row, int col, Direct
   msgs::Geometry *paint_visual_geo = CreateBoxGeometry(WALL_LENGTH, WALL_THICKNESS, PAINT_THICKNESS);
 
   msgs::Visual visual;
-  std::string visual_name = "v_" + std::to_string(row)
-                            + "_" + std::to_string(col) + "_" + to_char(dir);
+  std::string visual_name = "v_" + std::to_string(row) + "_" + std::to_string(col) + "_" + to_char(dir);
   visual.set_name(visual_name);
   visual.set_allocated_geometry(visual_geo);
   visual.set_allocated_pose(visual_pose);
@@ -140,8 +139,7 @@ std::list<sdf::ElementPtr> MazePlugin::CreateWallVisual(int row, int col, Direct
   paint_material->set_allocated_script(paint_script);
 
   msgs::Visual paint_visual;
-  std::string paint_visual_name = "paint_v_" + std::to_string(row)
-                                  + "_" + std::to_string(col) + "_" + to_char(dir);
+  std::string paint_visual_name = "paint_v_" + std::to_string(row) + "_" + std::to_string(col) + "_" + to_char(dir);
   paint_visual.set_name(paint_visual_name);
   paint_visual.set_allocated_geometry(paint_visual_geo);
   paint_visual.set_allocated_pose(paint_visual_pose);
