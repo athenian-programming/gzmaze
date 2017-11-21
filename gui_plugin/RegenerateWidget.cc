@@ -29,7 +29,7 @@ RegenerateWidget::RegenerateWidget()
   QPushButton *button = new QPushButton(tr("Generate Model"));
   connect(button, SIGNAL(clicked()), this, SLOT(OnButton()));
 
-  textEdit = new QTextEdit(tr("~/Projects/smartmouse/gzmaze/simple.mz"));
+  textEdit = new QTextEdit(tr("~/catkin_ws/src/lidar_navigation/triple_zig_zag.mz"));
   textEdit->setContentsMargins(1, 1, 1, 1);
   textEdit->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
   textEdit->setObjectName("maze_filename");
