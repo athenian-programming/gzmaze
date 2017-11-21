@@ -26,11 +26,8 @@ RegenerateWidget::RegenerateWidget()
   QPushButton *browse_button = new QPushButton(tr("Browse For Maze File"));
   connect(browse_button, SIGNAL(clicked()), this, SLOT(OnBrowseFile()));
 
-  QPushButton *button = new QPushButton(tr("Regenerate From File"));
+  QPushButton *button = new QPushButton(tr("Generate Model"));
   connect(button, SIGNAL(clicked()), this, SLOT(OnButton()));
-
-  //PRA QPushButton *randomButton = new QPushButton(tr("Regenerate Randomly"));
-  //PRA connect(randomButton, SIGNAL(clicked()), this, SLOT(OnRandomButton()));
 
   textEdit = new QTextEdit(tr("~/Projects/smartmouse/gzmaze/simple.mz"));
   textEdit->setContentsMargins(1, 1, 1, 1);
@@ -41,7 +38,6 @@ RegenerateWidget::RegenerateWidget()
   frameLayout->addWidget(browse_button);
   frameLayout->addWidget(textEdit);
   frameLayout->addWidget(button);
-  frameLayout->addWidget(randomButton);
   mainFrame->setLayout(frameLayout);
   mainLayout->addWidget(mainFrame);
 
@@ -80,14 +76,6 @@ void RegenerateWidget::OnBrowseFile()
     maze_filename = selected[0].toStdString();
     textEdit->setText(maze_filename.c_str());
   }
-}
-
-/////////////////////////////////////////////////
-void RegenerateWidget::OnRandomButton()
-{
-  msgs::GzString msg;
-  msg.set_data("random");
-  this->regenPub->Publish(msg);
 }
 
 /////////////////////////////////////////////////
