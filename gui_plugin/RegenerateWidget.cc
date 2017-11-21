@@ -29,8 +29,8 @@ RegenerateWidget::RegenerateWidget()
   QPushButton *button = new QPushButton(tr("Regenerate From File"));
   connect(button, SIGNAL(clicked()), this, SLOT(OnButton()));
 
-  QPushButton *randomButton = new QPushButton(tr("Regenerate Randomly"));
-  connect(randomButton, SIGNAL(clicked()), this, SLOT(OnRandomButton()));
+  //PRA QPushButton *randomButton = new QPushButton(tr("Regenerate Randomly"));
+  //PRA connect(randomButton, SIGNAL(clicked()), this, SLOT(OnRandomButton()));
 
   textEdit = new QTextEdit(tr("~/Projects/smartmouse/gzmaze/simple.mz"));
   textEdit->setContentsMargins(1, 1, 1, 1);

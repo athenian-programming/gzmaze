@@ -9,10 +9,12 @@
       <uri>model://sun</uri>
     </include>
 
+    <!-- PRA
     <include>
       <pose>-1.344 1.344 0.025 0 0 1.5707963267</pose>
       <uri>model://mouse</uri>
     </include>
+    -->
 
     <gui>
       <plugin name="sample" filename="libregenerate_widget.so"/>
