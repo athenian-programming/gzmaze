@@ -95,6 +95,7 @@ void MazePlugin::InsertWallsFromFile(sdf::ElementPtr base_link)
 
         charPos++;
         charPos++;
+      }
     }
 
     //add east and north walls
