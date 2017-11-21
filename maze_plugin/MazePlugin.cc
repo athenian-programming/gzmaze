@@ -69,27 +69,32 @@ void MazePlugin::InsertWallsFromFile(sdf::ElementPtr base_link)
 
       int charPos = 0;
       for (int j=0;j<MAZE_SIZE;j++){
-        if (line.at(charPos) == '|'){
-          //add a wall on the west
+        if (line.at(charPos) == '|' && line.at(charPos+1) == '_' ){
           InsertWall(base_link, i,j,Direction::W);
-        }
-        // New
-        if (line.at(charPos) == '_'){
-          //add a wall on the south
           InsertWall(base_link, i,j,Direction::S);
         }
-        charPos++;
-        if (line.at(charPos) == '_'){
-          //add a wall on the south
+        else if (line.at(charPos) == '_' && line.at(charPos+1) == '|' ){
+          InsertWall(base_link, i,j,Direction::E);
           InsertWall(base_link, i,j,Direction::S);
         }
-        // New
-        if (line.at(charPos) == '|'){
-          //add a wall on the west
+        else if (line.at(charPos) == ' ' && line.at(charPos+1) == '|' ){
+          InsertWall(base_link, i,j,Direction::E);
+        }
+        else if (line.at(charPos) == ' ' && line.at(charPos+1) == '_' ){
+          InsertWall(base_link, i,j,Direction::S);
+        }
+        else if (line.at(charPos) == '|' && line.at(charPos+1) == ' ' ){
           InsertWall(base_link, i,j,Direction::W);
         }
+        else if (line.at(charPos) == '_' && line.at(charPos+1) == ' ' ){
+          InsertWall(base_link, i,j,Direction::S);
+        }
+        else if (line.at(charPos) == '_' && line.at(charPos+1) == '_' ){
+          InsertWall(base_link, i,j,Direction::S);
+        }
+
         charPos++;
-      }
+        charPos++;
     }
 
     //add east and north walls
