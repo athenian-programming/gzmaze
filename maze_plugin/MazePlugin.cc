@@ -73,7 +73,7 @@ void MazePlugin::InsertWallsFromFile(sdf::ElementPtr base_link)
           //add a wall on the west
           InsertWall(base_link, i,j,Direction::W);
         }
-        charPos++;
+        //charPos++;
         if (line.at(charPos) == '_'){
           //add a wall on the south
           InsertWall(base_link, i,j,Direction::S);
@@ -100,7 +100,7 @@ void MazePlugin::InsertWall(sdf::ElementPtr link, int row, int col, Direction di
       || (row == MAZE_SIZE/2 && col == MAZE_SIZE/2 - 1 && (dir == Direction::N || dir == Direction::E))
       || (row == MAZE_SIZE/2 - 1 && col == MAZE_SIZE/2 && (dir == Direction::S || dir == Direction::W))
       || (row == MAZE_SIZE/2 - 1 && col == MAZE_SIZE/2 - 1 && (dir == Direction::S || dir == Direction::E))) {
-    return;
+    //return;
   }
 
   std::list<sdf::ElementPtr> walls_visuals = CreateWallVisual(row,col,dir);
